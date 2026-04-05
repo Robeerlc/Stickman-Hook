@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Stickman : MonoBehaviour
 {
-    [Header("Sprites Player")]
+    [Header ("Sprites Player")]
     [SerializeField] Sprite ballSprite;
     [SerializeField] Sprite stopSprite;
     [SerializeField] Sprite goSprite;
