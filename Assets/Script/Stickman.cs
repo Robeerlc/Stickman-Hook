@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class Stickman : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Sprites Player")]
+    [SerializeField] Sprite ballSprite;
+    [SerializeField] Sprite stopSprite;
+    [SerializeField] Sprite goSprite;
+    [SerializeField] Sprite backSprite;
+    [SerializeField] Sprite winSprite;
 }

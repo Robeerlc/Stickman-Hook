@@ -760,6 +760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c815c293aaf954db9a83243ec86a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stickman
+  ballSprite: {fileID: 5677974409971128395, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
+  stopSprite: {fileID: 2634816806227739618, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
+  goSprite: {fileID: 7316489778799528170, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
+  backSprite: {fileID: 2678546524522977710, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
+  winSprite: {fileID: 5552858905512666556, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
 --- !u!1 &1351195599
 GameObject:
   m_ObjectHideFlags: 0
