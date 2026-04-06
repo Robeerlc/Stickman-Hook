@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class Joint : MonoBehaviour
+public class JointAnchor : MonoBehaviour
 {
     [SerializeField] private Sprite spriteSticked;
     [SerializeField] private Sprite spriteUnsticked;
+    private Sprite defaultSprite;
 
     private SpriteRenderer spriteRenderer;
     private GameObject dashLine;
@@ -16,6 +17,16 @@ public class Joint : MonoBehaviour
 
     void Start () {
         spriteRenderer = GetComponent<SpriteRenderer> ();
+        defaultSprite = spriteRenderer.sprite;
+
+        if (spriteUnsticked == null) {
+            spriteUnsticked = defaultSprite;
+        }
+
+        if (spriteSticked == null) {
+            spriteSticked = defaultSprite;
+        }
+
         dashLine = gameObject.transform.GetChild (1).gameObject;
     }
 
@@ -27,6 +38,7 @@ public class Joint : MonoBehaviour
     public void SetUnsticked () {
         spriteRenderer.sprite = spriteUnsticked;
         sticked = false;
+        
     }
 
     public void Selected () {

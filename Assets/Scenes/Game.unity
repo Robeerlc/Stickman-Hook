@@ -796,6 +796,7 @@ MonoBehaviour:
   goSprite: {fileID: 7316489778799528170, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
   backSprite: {fileID: 2678546524522977710, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
   winSprite: {fileID: 5552858905512666556, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
+  anchor: {fileID: 1543394095}
 --- !u!233 &1196592038
 HingeJoint2D:
   m_ObjectHideFlags: 0
