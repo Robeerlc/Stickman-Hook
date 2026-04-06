@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Joint : MonoBehaviour
+public class JointAnchor : MonoBehaviour
 {
     [SerializeField] private Sprite spriteSticked;
     [SerializeField] private Sprite spriteUnsticked;

@@ -44,7 +44,7 @@ public class Stickman : MonoBehaviour
         lastBestPosJoint = 0;
         lastBestPosSelected = 0;
         touches = 0;
-        anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<Joint>().Selected();
+        anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Selected();
     }
 
     private void update()
@@ -74,8 +74,8 @@ public class Stickman : MonoBehaviour
 
             if (lastBestPosJoint != bestPos)
             {
-                anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<Joint>().Unselected();
-                anchor.transform.GetChild(bestPos).gameObject.GetComponent<Joint>().Selected();
+                anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Unselected();
+                anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().Selected();
 
                 lastBestPosSelected = bestPos;
             }
@@ -84,7 +84,7 @@ public class Stickman : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.GetMouseButtonDown(0) || CheckInput.GetKeyDown(KeyCode.Space) || ((Input.touchCount > 0) && (touches == 0)))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || ((Input.touchCount > 0) && (touches == 0)))
         {
             lineRenderer.enabled = true;
             hJoint.enabled = true;
@@ -92,8 +92,8 @@ public class Stickman : MonoBehaviour
 
             hJoint.connectedBody = anchor.transform.GetChild(bestPos).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
             actualJointPos = anchor.transform.GetChild(bestPos).gameObject.transform.position;
-            anchor.transform.GetChild(bestPos).gameObject.GetComponent<Joint>().SetSticked();
-            anchor.transform.GetChild(bestPos).gameObject.GetComponent<Joint>().Unselected();
+            anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().SetSticked();
+            anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().Unselected();
 
             lastBestPosJoint = bestPos;
             rb.angularVelocity = 0f;
@@ -102,19 +102,19 @@ public class Stickman : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonUp(0) || CheckInput.GetKeyUp(KeyCode.Space) || ((Input.touchCount == 0) && (touches > 0)))
+        if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || ((Input.touchCount == 0) && (touches > 0)))
         {
             lineRenderer.enabled = false;
             hJoint.enabled = false;
-            rb.linearVelocity = Vector2(rb.linearVelocity.x * factorX, rb.linearVelocity.y + factorY);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x * factorX, rb.linearVelocity.y + factorY);
             rb.gravityScale = gravityAir;
 
-            anchor.transform.GetChild(lastBestPosJoint).gameObject.GetComponent<Joint>().SetUnsticked();
+            anchor.transform.GetChild(lastBestPosJoint).gameObject.GetComponent<JointAnchor>().SetUnsticked();
 
             if (bestPos == lastBestPosJoint)
             {
-                anchor.transform.GetChild(bestPos).gameObject.GetComponent<Joint>().Selected();
-                anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<Joint>().Unselected();
+                anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().Selected();
+                anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Unselected();
             }
 
             spriteRenderer.sprite = ballSprite;
