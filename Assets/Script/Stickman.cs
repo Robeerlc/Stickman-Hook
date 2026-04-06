@@ -47,40 +47,38 @@ public class Stickman : MonoBehaviour
         anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Selected();
     }
 
-    private void update()
+    private void Update()
     {
         bestPos = 0;
         bestDistance = float.MaxValue;
 
         for (int i = 0; i < anchor.transform.childCount; i++)
         {
+            float actualDistance = Vector2.Distance(gameObject.transform.position, anchor.transform.GetChild(i).transform.position);
+            if (actualDistance < bestDistance)
             {
-                float actualDistance = Vector2.Distance(gameObject.transform.position, anchor.transform.GetChild(i).transform.position);
-                if (actualDistance < bestDistance)
-                {
-                    bestPos = i;
-                    bestDistance = actualDistance;
-                }
-            }
-            CheckInput();
-
-            if (sticked)
-            {
-                lineRenderer.SetPosition(0, gameObject.transform.position);
-                lineRenderer.SetPosition(1, actualJointPos);
-
-                ChangeSprite();
-            }
-
-            if (lastBestPosJoint != bestPos)
-            {
-                anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Unselected();
-                anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().Selected();
-
-                lastBestPosSelected = bestPos;
+                bestPos = i;
+                bestDistance = actualDistance;
             }
         }
+        CheckInput();
+
+        if (sticked)
+        {
+            lineRenderer.SetPosition(0, gameObject.transform.position);
+            lineRenderer.SetPosition(1, actualJointPos);
+
+            ChangeSprite();
+        }
+
+        if (lastBestPosJoint != bestPos)
+        {
+            anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Unselected();
+            anchor.transform.GetChild(bestPos).gameObject.GetComponent<JointAnchor>().Selected();
+        }
+        lastBestPosSelected = bestPos;
     }
+
 
     private void CheckInput()
     {
@@ -126,6 +124,35 @@ public class Stickman : MonoBehaviour
 
     private void ChangeSprite()
     {
+        if (rb.linearVelocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
 
+        if (rb.linearVelocity.x < 0.7f && rb.linearVelocity.x > -0.7f && gameObject.transform.position.y < actualJointPos.y)
+        {
+            spriteRenderer.sprite = stopSprite;
+        }
+        else
+        {
+            if (rb.linearVelocity.y < 0)
+            {
+                spriteRenderer.sprite = goSprite;
+            }
+            else
+            {
+                spriteRenderer.sprite = backSprite;
+            }
+        }
+        gameObject.transform.eulerAngles = LookAt2d(actualJointPos - gameObject.transform.position);
+    }
+
+    public Vector3 LookAt2d(Vector3 vec)
+    {
+        return new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, vec));
     }
 }
