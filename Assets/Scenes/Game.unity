@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 1196592040}
   - component: {fileID: 1196592041}
   - component: {fileID: 1196592037}
+  - component: {fileID: 1196592042}
   m_Layer: 0
   m_Name: Stickman
   m_TagString: Untagged
@@ -797,6 +798,10 @@ MonoBehaviour:
   backSprite: {fileID: 2678546524522977710, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
   winSprite: {fileID: 5552858905512666556, guid: 582ec2579d8011349b9773af2b207eb7, type: 3}
   anchor: {fileID: 1543394095}
+  gravityRope: 2
+  gravityAir: 0.5
+  factorX: 1.2
+  factorY: 1
 --- !u!233 &1196592038
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -996,6 +1001,24 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.59999996
+--- !u!114 &1196592042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196592034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4e2dd16fdfaa84bb9d84d20351af90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  player: {fileID: 0}
+  speed: 0.3
+  offset: 0
+  maxOfset: 1.2
+  minX: -1.5
+  maxX: 10000
 --- !u!1 &1351195599
 GameObject:
   m_ObjectHideFlags: 0
