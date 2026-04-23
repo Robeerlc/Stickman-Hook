@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ee6ad1e744c454793963a54e591bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  finishLine: {fileID: 0}
+  finishLine: {fileID: 1676481612}
   cameraFollow: {fileID: 519420033}
   stickman: {fileID: 1196592037}
 --- !u!4 &266702033

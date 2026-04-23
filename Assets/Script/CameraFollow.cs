@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
      [HideInInspector] public float offset;
      public float maxOfset;
      public float minX , maxX;
+     public float orthographicSizeAfterWin = 2.5f;
 
     private void Start()
     {
@@ -41,6 +42,12 @@ public class CameraFollow : MonoBehaviour
 
         gameObject.transform.position = new Vector3(nextX, player.transform.position.y, gameObject.transform.position.z);
          
+    }
+    public void Win(){
+       maxOfset = 0;
+       gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+       Camera cam = GetComponent<Camera>();
+       cam.orthographicSize /= orthographicSizeAfterWin;
     }
 
 }

@@ -34,6 +34,8 @@ public class Stickman : MonoBehaviour
 
     [Header("Bool")]
     private bool sticked = false;
+    private bool won = false;
+
     private void Start()
     {
         hJoint = GetComponent<HingeJoint2D>();
@@ -45,6 +47,7 @@ public class Stickman : MonoBehaviour
         lastBestPosSelected = 0;
         touches = 0;
         anchor.transform.GetChild(lastBestPosSelected).gameObject.GetComponent<JointAnchor>().Selected();
+        won = false;
     }
 
     private void Update()
@@ -61,7 +64,8 @@ public class Stickman : MonoBehaviour
                 bestDistance = actualDistance;
             }
         }
-        CheckInput();
+        if(!won)
+            CheckInput();
 
         if (sticked)
         {
@@ -155,4 +159,24 @@ public class Stickman : MonoBehaviour
     {
         return new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, vec));
     }
+
+public bool getSticked(){
+    return sticked;
+}
+public void Reset(Vector3 initPosition){
+    rb.velocity = Vector2.zero;
+    rb.angularVelocity = 0f;
+    gameObject.transform.position = initPosition;
+    gameObject.transform.rotation = new Quaternion(0f,0f,0f,0f);
+}
+public void Win(float speedWin){
+    won = true;
+    spriteRenderer.flipX = false;
+    rb.gravityScale = 0;
+    gameObject.transform.eulerAngles = LookAt2d(rb.velocity);
+    rb.velocity = rb.velocity.normalized * speedWin;
+    rb.angularVelocity = 0f;
+    spriteRenderer.sprite = winSprite;
+}
+
 }
