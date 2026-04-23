@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float speed;
     private Rigidbody2D playerRb;
-     public float offset;
+     [HideInInspector] public float offset;
      public float maxOfset;
      public float minX , maxX;
 
@@ -20,7 +20,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (playerRb.linearVelocity.x > 0)
         {
-            offset += speed * Time.deltaTime;
+            offset += speed * Time.deltaTime * speed;
             if(offset > maxOfset)
             {
                 offset = maxOfset;
