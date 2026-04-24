@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float speed;
     private Rigidbody2D playerRb;
-     public float offset;
+     [HideInInspector] public float offset;
      public float maxOfset;
      public float minX , maxX;
+     public float orthographicSizeAfterWin = 2.5f;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (playerRb.linearVelocity.x > 0)
         {
-            offset += speed * Time.deltaTime;
+            offset += speed * Time.deltaTime * speed;
             if(offset > maxOfset)
             {
                 offset = maxOfset;
@@ -41,6 +42,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         gameObject.transform.position = new Vector3(nextX, player.transform.position.y, gameObject.transform.position.z);
          
+    }
+    public void Win(){
+       maxOfset = 0;
+       gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+       Camera cam = GetComponent<Camera>();
+       cam.orthographicSize /= orthographicSizeAfterWin;
     }
 
 }
