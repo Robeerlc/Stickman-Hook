@@ -10,7 +10,7 @@
 
 **Stickman Hook** es un videojuego de plataformas y físicas en 2D. El jugador controla a un intrépido monigote (*stickman*) que debe sortear peligrosos niveles utilizando únicamente un gancho y la fuerza de la inercia para balancearse hasta la meta. 
 
-Este proyecto ha sido desarrollado desde cero, abarcando desde el concepto inicial hasta la compilación (*build*) final, implementando sistemas de físicas, iluminación, audio, control de escenas y UI.
+Este proyecto ha sido desarrollado desde cero, abarcando desde el concepto inicial hasta la compilación final, implementando sistemas de físicas, iluminación, audio, control de escenas y UI.
 
 ---
 
@@ -35,20 +35,3 @@ El juego está diseñado para ser muy intuitivo, utilizando un único botón (*O
 * **Teclado (Opcional PC):**
   * `R`: Reiniciar el nivel actual.
   * `ESC`: Pausar el juego o volver al Menú Principal.
-
----
-
-## 📂 Estructura del Repositorio
-
-Este repositorio cumple con la estructura de carpetas y archivos solicitada para la entrega del proyecto:
-
-```text
-Apellido_Nombre_ProyectoGameDev/
-├── 📄 01_DocumentoTeorico.pdf     # Fundamentos, arquitectura y comparativa de motores
-├── 📄 02_DocumentacionIA.pdf      # Inventario, prompts y reflexión sobre uso de IA
-├── 📄 03_GDD.pdf                  # Game Design Document con mecánicas y arquitectura
-├── 📄 04_InformePruebas.pdf       # Tabla de QA y optimizaciones de rendimiento
-├── 📁 05_Proyecto/                # Código fuente completo y assets del motor
-├── 📁 06_Build/                   # Archivo ejecutable del juego compilado
-├── 🎥 07_VideoDemo.mp4            # Vídeo explicativo y demostración de gameplay
-└── 📝 README.md                   # Instrucciones de instalación, controles y estructura
