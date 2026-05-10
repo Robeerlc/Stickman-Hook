@@ -14,29 +14,37 @@ public class GameManager : MonoBehaviour
     private Vector3 initPos;
     private bool won;
 
-    private void Start(){
+    private void Start()
+    {
         stickman = player.GetComponent<Stickman>();
         initPos = player.transform.position;
     }
 
-    private void Update(){
-        if(stickman.getSticked() == false){
-            if(player.transform.position.x < -5){
+    private void Update()
+    {
+        if (stickman.getSticked() == false)
+        {
+            if (player.transform.position.x < -5)
+            {
                 ResetGame();
             }
-            if(player.transform.position.y < -6){
+            if (player.transform.position.y < -6)
+            {
                 ResetGame();
             }
         }
-        if(finishLine.position.x < player.transform.position.x && !won){
+        if (finishLine.position.x < player.transform.position.x && !won)
+        {
             won = true;
             Win();
         }
     }
-    private void ResetGame(){
+    private void ResetGame()
+    {
         stickman.Reset(initPos);
     }
-    private void Win(){
+    private void Win()
+    {
         stickman.Win(speedOnWin);
         particleEffect.SetActive(true);
         particleEffect.transform.parent = null;
@@ -46,7 +54,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FinishLevel());
     }
 
-    IEnumerator FinishLevel (){
+    IEnumerator FinishLevel()
+    {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(0);
     }
