@@ -5,13 +5,13 @@ using UnityEngine;
 public class Shadow : MonoBehaviour
 {
     [SerializeField] Material shadowMaterial;
-    [SerializeField] private Vector2 shadowOffset;
+    public Vector2 shadowOffset;
 
     protected SpriteRenderer spriteRenderer;
     protected GameObject shadowGameObject;
     protected SpriteRenderer shadowSpriteRenderer;
 
-    private void Start ()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
