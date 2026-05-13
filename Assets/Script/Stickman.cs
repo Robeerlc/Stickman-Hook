@@ -166,7 +166,7 @@ public class Stickman : MonoBehaviour
     }
     public void Reset(Vector3 initPosition)
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         gameObject.transform.position = initPosition;
         gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -176,8 +176,8 @@ public class Stickman : MonoBehaviour
         won = true;
         spriteRenderer.flipX = false;
         rb.gravityScale = 0;
-        gameObject.transform.eulerAngles = LookAt2d(rb.velocity);
-        rb.velocity = rb.velocity.normalized * speedWin;
+        gameObject.transform.eulerAngles = LookAt2d(rb.linearVelocity);
+        rb.linearVelocity = rb.linearVelocity.normalized * speedWin;
         rb.angularVelocity = 0f;
         spriteRenderer.sprite = winSprite;
     }
